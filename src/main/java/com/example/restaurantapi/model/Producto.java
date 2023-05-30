@@ -1,4 +1,4 @@
-package com.dwawu.proyecto_corte_3_soa.Model;
+package com.example.restaurantapi.model;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
@@ -17,40 +17,26 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@JsonIdentityInfo(scope = Product.class, generator = ObjectIdGenerators.PropertyGenerator.class,
+@JsonIdentityInfo(scope = Producto.class, generator = ObjectIdGenerators.PropertyGenerator.class,
         property = "id")
-public class Product implements Serializable {
+public class Producto implements Serializable {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @Column(name = "nombre_producto")
-    private String name;
+    private String nombre;
 
     @Column(name = "descripcion")
-    private String description;
+    private String descripcion;
 
     @Column(name = "cantidad")
-    private long quantity;
-
-    @Column(name = "tipo_paquete")
-    private String package_type;
+    private long cantidad;
 
     @Column(name = "precio_unitario")
-    private double unitary_price;
+    private double precio_unitario;
 
     @Column(name = "IVA")
     private boolean iva;
-
-    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
-    private List<ProductDetail> productDetailList;
-
-    public void update_quantity(long quantity) {
-        this.quantity -= quantity;
-    }
-
-    public boolean no_quantity() {
-        return this.quantity <= 0;
-    }
 }

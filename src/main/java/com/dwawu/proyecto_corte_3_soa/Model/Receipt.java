@@ -8,40 +8,51 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table(name = "detalles_productos")
+@Table(name = "facturas")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@JsonIdentityInfo(scope =Receipt.class , generator = ObjectIdGenerators.PropertyGenerator.class,
+@JsonIdentityInfo(scope = Receipt.class, generator = ObjectIdGenerators.PropertyGenerator.class,
         property = "id")
-public class Receipt {
+public class Receipt implements Serializable {
     @Id
-    @Column(name = "id_detalles_productos")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @ManyToOne
-    @JoinColumn(name = "id_cliente")
-    private Client client;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "profile_id")
+    private User user;
 
-    @OneToMany(mappedBy = "receipt",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "receipt", cascade = CascadeType.ALL  )
     private List<ProductDetail> productDetailList;
-    
+
     @Column(name = "valor_total")
     private double total;
-    
-    public double getTotal(){
-        double total=0;
-        for (ProductDetail productDetail:productDetailList
-             ) {
-                     total+=productDetail.getSubtotal();
-        }
-        return total;
+
+    @Column(name = "fecha_creacion")
+    @Temporal(TemporalType.DATE)
+    private Date date;
+
+    @PrePersist
+    public void prePersist() {
+        this.date = new Date();
     }
 
-
+    @Override
+    public String toString() {
+        return "Receipt{" +
+                "id=" + id +
+                ", user=" + user +
+                ", productDetailList=" + productDetailList +
+                ", total=" + total +
+                ", date=" + date +
+                '}';
+    }
 }

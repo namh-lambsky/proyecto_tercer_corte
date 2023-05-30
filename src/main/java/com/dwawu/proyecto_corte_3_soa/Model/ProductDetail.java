@@ -9,6 +9,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.io.Serializable;
+
 @Entity
 @Table(name = "detalles_productos")
 @Getter
@@ -17,14 +19,14 @@ import lombok.Setter;
 @AllArgsConstructor
 @JsonIdentityInfo(scope =ProductDetail.class , generator = ObjectIdGenerators.PropertyGenerator.class,
         property = "id")
-public class ProductDetail {
+public class ProductDetail implements Serializable {
     @Id
-    @Column(name = "id_detalles_productos")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @ManyToOne
-    @JoinColumn(name = "id_producto",referencedColumnName = "id")
+    @JoinColumn(name = "producto_id",referencedColumnName = "id")
     private Product product;
 
     @Column(name = "cantidad")
@@ -34,16 +36,17 @@ public class ProductDetail {
     private double subtotal;
 
     @ManyToOne
-    @JoinColumn(name = "id_factura",referencedColumnName = "id")
+    @JoinColumn(name = "factura_id",referencedColumnName = "id")
     private Receipt receipt;
 
-    public double getSubtotal(){
-        if (this.product.isIva()){
-            return (this.product.getUnitary_price()*0.19)*this.quantity;
-        }
-        else {
-            return this.product.getUnitary_price()*this.quantity;
-        }
+    @Override
+    public String toString() {
+        return "ProductDetail{" +
+                "id=" + id +
+                ", product=" + product +
+                ", quantity=" + quantity +
+                ", subtotal=" + subtotal +
+                ", receipt=" + receipt +
+                '}';
     }
-
 }
