@@ -1,0 +1,28 @@
+<div class="card border-success mb-3">
+  <div class="card-header">Clientes</div>
+  <div class="card-body text-success">
+    <h5 class="card-title">Nuestros clientes</h5>
+
+
+    <table datatable-dtOptions="dtoptions" class="table table-stripped">
+      <thead class="table-dark">
+        <tr>
+          <th>ID cliente</th>
+          <th>Nombre</th>
+          <th>Apellido</th>
+          <th>Fecha de creación</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let cliente of clientes">
+          <td>{{ cliente.id }}</td>
+          <td>{{ cliente.nombre }}</td>
+          <td>{{ cliente.apellido }}</td>
+          <td>{{ cliente.createdAt }}</td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>

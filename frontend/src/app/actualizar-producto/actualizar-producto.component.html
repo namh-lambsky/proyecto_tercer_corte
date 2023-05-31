@@ -1,0 +1,81 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">Registra producto</div>
+
+        <div class="card-body">
+          <form (ngSubmit)="onSubmit()">
+            <div class="mb-3">
+              <label for="name" class="form-label">Nombre</label>
+              <input
+                type="text"
+                class="form-control"
+                id="name"
+                required
+                [(ngModel)]="producto.name"
+                name="name"
+              >
+            </div>
+
+            <div class="mb-3">
+              <label for="description" class="form-label">Descripción</label>
+              <input
+                type="text"
+                class="form-control"
+                id="description"
+                required
+                [(ngModel)]="producto.description"
+                name="description"
+              />
+            </div>
+
+            <div class="mb-3">
+              <label for="quantity" class="form-label">Cantidad</label>
+              <input
+                type="number"
+                min="1"
+                class="form-control"
+                id="quantity"
+                required
+                [(ngModel)]="producto.quantity"
+                name="quantity"
+              />
+            </div>
+
+            <div class="mb-3">
+              <label for="unitary_price" class="form-label"
+                >Precio por unidad</label
+              >
+              <input
+                type="number"
+                min="1"
+                class="form-control"
+                id="unitary_price"
+                required
+                [(ngModel)]="producto.unitary_price"
+                name="unitary_price"
+              >
+            </div>
+
+            <div class="mb-3">
+              <label for="iva" class="form-label">IVA</label>
+              <input
+                type="checkbox"
+                class="form-control"
+                id="iva"
+                required
+                [(ngModel)]="producto.iva"
+                name="iva"
+              >
+            </div>
+
+            <button type="submit" class="btn btn-success">
+              Actualizar producto
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
