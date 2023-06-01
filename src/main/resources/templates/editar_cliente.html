@@ -16,8 +16,7 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
             <a class="nav-item nav-link active" th:href="@{/clientes}">Clientes<span class="sr-only">(current)</span></a>
-            <a class="nav-item nav-link" href="#">Features</a>
-            <a class="nav-item nav-link" href="#">Pricing</a>
+
         </div>
     </div>
 </nav>
@@ -45,7 +44,7 @@
                     </div>
                     <div class="form-group">
                         <label>Telefono:</label>
-                        <input type="number" name="telefono" th:field="*{telefono}" class="form-control"
+                        <input type="number" minlength="1" name="telefono" th:field="*{telefono}" class="form-control"
                                placeholder="Digite su telefono" required>
                     </div>
                     <br>
