@@ -37,5 +37,11 @@ public class Factura implements Serializable {
 
     @Column(name = "fecha_creacion")
     @Temporal(TemporalType.DATE)
-    private Date date;
+    private Date fecha_creacion;
+
+    @PrePersist
+    @PreUpdate
+    public void on_update() {
+        fecha_creacion = new Date();
+    }
 }

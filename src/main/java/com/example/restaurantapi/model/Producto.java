@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.Date;
 
 @Entity
 @Table(name = "productos")
@@ -39,4 +39,14 @@ public class Producto implements Serializable {
 
     @Column(name = "IVA")
     private boolean iva;
+
+    @Column(name = "fecha_creacion")
+    @Temporal(TemporalType.DATE)
+    private Date fecha_creacion;
+
+    @PrePersist
+    @PreUpdate
+    public void on_update() {
+        fecha_creacion = new Date();
+    }
 }

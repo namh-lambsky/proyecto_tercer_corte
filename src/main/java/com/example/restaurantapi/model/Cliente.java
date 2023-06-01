@@ -11,6 +11,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -51,4 +52,10 @@ public class Cliente implements Serializable {
     @JsonIgnoreProperties(value = {"cliente","hibernateLazyInitializer","handler"},allowSetters = true)
     private List<Factura> facturas;
 
+
+    @PrePersist
+    @PreUpdate
+    public void on_update() {
+        fecha_creacion = new Date();
+    }
 }

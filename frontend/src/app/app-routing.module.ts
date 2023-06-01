@@ -18,7 +18,7 @@ const routes: Routes = [
   {path:'cliente', component:ClienteComponent},
   {path:'detalle', component:DetalleComponent},
   {path: 'facturas/form/:clienteId', component: FacturasComponent},
-  {path:'',redirectTo:'login-restaurante',pathMatch:'full'}
+  {path:'',redirectTo:'cliente',pathMatch:'full'}
 ];
 
 @NgModule({
