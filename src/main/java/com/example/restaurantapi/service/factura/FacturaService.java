@@ -29,5 +29,6 @@ public class FacturaService implements IFacturaService {
     public Factura updateFactura(Factura factura) {return repo.save(factura);}
 
     @Override
-    public void deleteFactura(long id) {return repo.deleteById(id);}
+    public void deleteFactura(long id) {repo.deleteById(id);
+    }
 }

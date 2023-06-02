@@ -28,12 +28,22 @@
 
                     <div class="form-group">
                         <label>Id factura: </label>
-                        <input type="number" name="id" th:field="*{id}" class="form-control" placeholder="Digite el id de la factura" required>
+                        <input type="number" name="id" th:field="*{id}" class="form-control" placeholder="Digite el ID de la factura" required>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label>ID Cliente: </label>
+                        <input type="number" name="ID Cliente" th:field="*{cliente}" class="form-control" placeholder="Digite el ID del cliente" required>
                     </div>
                     <br>
                     <div class="form-group">
                         <label>Valor total: </label>
-                        <input type="number" name="valor total" th:field="*{valor_total}" class="form-control" placeholder="Digite el valor total de la factura" required>
+                        <input type="number" name="valor total" th:field="*{total}" class="form-control" placeholder="Digite el valor total de la factura" required>
+                    </div>
+                    <br>
+                    <div class="box-footer">
+                        <button class="btn btn-success">Guardar</button>
+                        <a th:href="@{/facturas}" class="btn btn-info">Volver</a>
                     </div>
 
                 </form>

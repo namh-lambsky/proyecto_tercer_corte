@@ -8,16 +8,16 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-    <a class="navbar-brand" th:href="@{/clientes}">Restaurante</a>
+    <a class="navbar-brand" th:href="@{/facturas}">Restaurante</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
             aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-            <a class="nav-item nav-link active" th:href="@{/clientes}">Clientes<span
+            <a class="nav-item nav-link active" th:href="@{/facturas}">Facturas<span
                     class="sr-only">(current)</span></a>
-            <a class="nav-item nav-link" th:href="@{/productos}">Productos<span
+            <a class="nav-item nav-link" th:href="@{/facturas}">Facturas<span
                     class="sr-only">(current)</span></a>
             <a class="nav-item nav-link active" th:href="@{/facturas}">Facturas</a>
         </div>
@@ -35,6 +35,7 @@
                 <th scope="col">Id Cliente</th>
                 <th scope="col">Items</th>
                 <th scope="col">Valor Total</th>
+                <th>Acciones</th>
             </tr>
             </thead>
             <tbody>
@@ -43,6 +44,9 @@
                 <td th:text="${factura.cliente.id}">Cliente</td>
                 <td th:text="${factura.items}">Items</td>
                 <td th:number="${factura.total}">Total</td>
+                <td><a th:href="@{/facturas/editar/{id}(id=${factura.id})}" class="btn btn-info">Editar factura</a>
+                    <a th:href="@{/facturas/{id}(id=${factura.id})}" class="btn btn-danger">Eliminar factura</a>
+                </td>
             </tr>
             </tbody>
         </table>
