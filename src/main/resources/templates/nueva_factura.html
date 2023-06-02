@@ -24,12 +24,8 @@
         <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
             <h1 class="text-center">Crear Facturas</h1>
             <div class="card-body">
-                <form th:action="@{/facturas/editar/{id}(id=${producto.id})}" th:object="${factura}" method="POST">
-
-                    <div class="form-group">
-                        <label>Id factura: </label>
-                        <input type="number" name="id" th:field="*{id}" class="form-control" placeholder="Digite el ID de la factura" required>
-                    </div>
+                <form th:action="@{/facturas/crear/{id}(id=${producto.id})}" th:object="${factura}" method="POST">
+                    
                     <br>
                     <div class="form-group">
                         <label>ID Cliente: </label>
