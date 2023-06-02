@@ -8,17 +8,18 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">Gestion Bella Vita</a>
+    <a class="navbar-brand" th:href="@{/clientes}">Gestion Bella Vita</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
             aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-            <a class="nav-item nav-link active" th:href="@{/clientes}">Clientes<span
+            <a class="nav-item nav-link" th:href="@{/clientes}">Clientes<span
                     class="sr-only">(current)</span></a>
-            <a class="nav-item nav-link" href="#">Productos</a>
-            <a class="nav-item nav-link" href="#">Facturas</a>
+            <a class="nav-item nav-link active" th:href="@{/productos}">Productos<span
+                    class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link" th:href="@{/facturas}">Facturas</a>
         </div>
     </div>
 </nav>
@@ -30,7 +31,7 @@
     <br>
     <div class="row">
         <div class="col-lg-3">
-            <a th:href="@{/agregarProducos}" class="btn btn-primary btn-sm mb3">Agregar Productos</a>
+            <a th:href="@{/productos/nuevo}" class="btn btn-primary btn-sm mb3">Agregar Productos</a>
         </div>
     </div>
     <br>
@@ -42,18 +43,17 @@
             <th>Descripción</th>
             <th>Cantidad</th>
             <th>Precio unitario</th>
-            <th>Iva</th>
-            <th>Fecha de creación</th>
+            <th>IVA</th>
+            <th>Acciones</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="producto: ${productos}">
-            <td th:text="${producto.nombre_producto}">Nombre producto</td>
+            <td th:text="${producto.nombre}">Nombre producto</td>
             <td th:text="${producto.descripcion}">Descripción</td>
             <td th:text="${producto.cantidad}">cantidad</td>
             <td th:text="${producto.precio_unitario}">Precio Unitario</td>
             <td th:text="${producto.iva}">Iva</td>
-            <td th:text="${producto.fecha_creacion}">Fecha de creación</td>
             <td><a th:href="@{/productos/editar/{id}(id=${producto.id})}" class="btn btn-info">Editar proucto</a>
                 <a th:href="@{/productos/{id}(id=${producto.id})}" class="btn btn-danger">Eliminar producto</a>
             </td>

@@ -13,27 +13,21 @@ public class FacturaService implements IFacturaService {
     @Autowired
     private IFacturaRepo repo;
     @Override
-    public List<Factura> getAllFacturas() {
-        return repo.findAll();
-    }
+    public List<Factura> getAllFacturas() { return repo.findAll();}
 
     @Override
     public Factura getById(long id) {
-        return null;
+        return repo.findById(id).get();
     }
 
     @Override
-    public Factura saveClient(Factura factura) {
-        return null;
+    public Factura saveFactura(Factura factura) {
+        return repo.save(factura);
     }
 
     @Override
-    public Factura updateClient(Factura factura) {
-        return null;
-    }
+    public Factura updateFactura(Factura factura) {return repo.save(factura);}
 
     @Override
-    public void deleteClient(long id) {
-
-    }
+    public void deleteFactura(long id) {return repo.deleteById(id);}
 }

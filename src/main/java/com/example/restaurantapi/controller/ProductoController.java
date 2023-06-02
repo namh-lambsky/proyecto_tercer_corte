@@ -16,12 +16,13 @@ public class ProductoController {
         model.addAttribute("productos", productoService.getAllProducts());
         return "productos";
     }
-    @GetMapping("/productos/agregar")
+    @GetMapping("/productos/nuevo")
     public String showForm(Model model) {
         Producto producto = new Producto();
-        model.addAttribute("productos", producto);
-        return "agregarProductos";
+        model.addAttribute("producto", producto);
+        return "nuevo_producto";
     }
+
     @PostMapping("/productos")
     public String save(@ModelAttribute("producto") Producto producto) {
         productoService.saveProduct(producto);
@@ -30,7 +31,7 @@ public class ProductoController {
 
     @GetMapping("/productos/editar/{id}")
     public String showEditForm(@PathVariable long id, Model model){
-        model.addAttribute("productos",productoService.getProductById(id));
+        model.addAttribute("producto",productoService.getProductById(id));
         return "editar_producto";
     }
 

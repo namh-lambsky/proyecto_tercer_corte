@@ -44,4 +44,5 @@ public class Factura implements Serializable {
     public void on_update() {
         fecha_creacion = new Date();
     }
+
 }
